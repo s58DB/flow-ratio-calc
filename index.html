@@ -23,16 +23,21 @@
 
   <script>
     function izracunaj() {
-      const flow = parseFloat(document.getElementById('flow').value);
-      const correction = parseFloat(document.getElementById('correction').value);
-      if (isNaN(flow) || isNaN(correction)) {
-        document.getElementById('result').innerText = "Prosim vnesi veljavna števila.";
-        return;
-      }
-      const flowRatioNew = flow * (100 + correction) / 100;
-      const zaokrozen = flowRatioNew.toFixed(3);
-      document.getElementById('result').innerText = `Novi Flow Ratio: ${zaokrozen}`;
-    }
+  const flowInput = document.getElementById('flow').value.replace(",", ".");
+  const correctionInput = document.getElementById('correction').value.replace(",", ".");
+
+  const flow = parseFloat(flowInput);
+  const correction = parseFloat(correctionInput);
+
+  if (isNaN(flow) || isNaN(correction)) {
+    document.getElementById('result').innerText = "Prosim vnesi veljavna števila.";
+    return;
+  }
+
+  const flowRatioNew = flow * (100 + correction) / 100;
+  const zaokrozen = flowRatioNew.toFixed(3);
+  document.getElementById('result').innerText = `Novi Flow Ratio: ${zaokrozen}`;
+}
   </script>
 </body>
 </html>
